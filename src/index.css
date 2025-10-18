@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-baseFont;
+  }
+  p{
+    @apply font-textFont;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.service-marquee {
+  max-width: calc(var(--containerWidth));
+  margin-left: auto;
+  --speed: 25s;
+  --single-slide-speed: calc(var(--speed) / var(--numItems));
+  --item-gap: 25px;
+  --item-width: 458px; 
+  --item-width-plus-gap: calc(var(--item-width) + var(--item-gap));
+  --track-width: calc(var(--item-width-plus-gap) * (var(--numItems) - 1));
+}
+
+
+.service-marquee-track {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: var(--track-width) [track] 0px [resting];
+  width: max-content;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.service-marquee-item {
+  grid-area: resting;
+  width: var(--item-width);
+  height: 30rem;
+  background-position: center;
+  background-size: cover;
+  animation: service-marquee-anim var(--speed) linear infinite;
+  animation-delay: calc(var(--single-slide-speed) * var(--itemPosition) * -1);
+}
+
+@keyframes service-marquee-anim {
+  to {
+    transform: translate(calc(-100cqw - 100%));
+  }
+}
+
+/* .service-fadeout {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5rem,
+    black calc(100% - 5rem),
+    transparent
+  );
+} */
+
+
+@media  only screen and (max-width: 770px){
+  .service-marquee{
+    --item-width: 358px; 
+  }
+  .service-marquee-item{
+      height: 25rem;
+  }
+}
