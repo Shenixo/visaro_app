@@ -46,9 +46,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ease: "easeInOut", duration: 0.4, delay: 0.5 }}
-            //  onClick={() =>
-            //       window.open("https://visaro-dashboard.vercel.app/", "_blank")
-            //     }
+             onClick={() =>
+                  window.open("https://visaro-dashboard.vercel.app/", "_blank")
+                }
           >
             <div className="w-full max-w-[80%] mx-auto ">
               <Button
